@@ -1,0 +1,5 @@
+Jan 12 10:00:01 sshd Failed password for root from 192.168.1.10
+Jan 12 10:00:02 sshd Failed password for root from 192.168.1.10
+Jan 12 10:00:03 sshd Failed password for root from 192.168.1.10
+Jan 12 10:00:10 sshd Failed password for admin from 192.168.1.11
+Jan 12 10:00:15 sshd Accepted password for user from 192.168.1.15
