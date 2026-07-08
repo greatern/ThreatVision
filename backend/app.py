@@ -3,6 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 from database import SessionLocal, Alert
+import threading
+from detector import monitor
 
 app = FastAPI()
 
@@ -15,6 +17,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# --- Start background monitor ---
+
+monitor_thread = threading.Thread(target=monitor, daemon=True)
+monitor_thread.start()
 
 # --- Pydantic Schemas ---
 

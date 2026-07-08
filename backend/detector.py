@@ -47,38 +47,44 @@ def save_alerts(alerts):
 def monitor():
     print("🔍 ThreatVision monitoring started...")
     processed_lines = 0
+    alerted_ips = set()
 
     while True:
-        with open(LOG_FILE, "r") as file:
-            lines = file.readlines()
+        try:
+            with open(LOG_FILE, "r") as file:
+                lines = file.readlines()
 
-        new_lines = lines[processed_lines:]
+            new_lines = lines[processed_lines:]
 
-        if new_lines:
-            failed_attempts = defaultdict(int)
-            alerts = []
+            if new_lines:
+                failed_attempts = defaultdict(int)
+                alerts = []
 
-            for line in new_lines:
-                if "Failed password" in line:
-                    ip = line.split("from")[-1].strip()
-                    failed_attempts[ip] += 1
+                for line in new_lines:
+                    if "Failed password" in line:
+                        ip = line.split("from")[-1].strip()
+                        failed_attempts[ip] += 1
 
-                    if failed_attempts[ip] >= 3:
-                        alert = {
-                            "type": "Brute Force Attack",
-                            "ip": ip,
-                            "severity": "HIGH",
-                            "message": f"Multiple failed logins detected from {ip}"
-                        }
-                        alerts.append(alert)
+                        if failed_attempts[ip] >= 3 and ip not in alerted_ips:
+                            alert = {
+                                "type": "Brute Force Attack",
+                                "ip": ip,
+                                "severity": "HIGH",
+                                "message": f"Multiple failed logins detected from {ip}"
+                            }
+                            alerts.append(alert)
+                            alerted_ips.add(ip)
 
-            if alerts:
-                save_alerts(alerts)
-                for alert in alerts:
-                    print("\n🚨 ALERT DETECTED")
-                    print(alert)
+                if alerts:
+                    save_alerts(alerts)
+                    for alert in alerts:
+                        print("\n🚨 ALERT DETECTED")
+                        print(alert)
 
-            processed_lines = len(lines)
+                processed_lines = len(lines)
+
+        except Exception as e:
+            print(f"Monitor error: {e}")
 
         time.sleep(5)
 
