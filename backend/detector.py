@@ -1,5 +1,6 @@
 from collections import defaultdict
 import os
+import time
 from database import SessionLocal, Alert
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -43,10 +44,44 @@ def save_alerts(alerts):
     db.close()
 
 
-if __name__ == "__main__":
-    alerts = analyze_logs()
-    save_alerts(alerts)
+def monitor():
+    print("🔍 ThreatVision monitoring started...")
+    processed_lines = 0
 
-    for alert in alerts:
-        print("\n🚨 ALERT DETECTED")
-        print(alert)
+    while True:
+        with open(LOG_FILE, "r") as file:
+            lines = file.readlines()
+
+        new_lines = lines[processed_lines:]
+
+        if new_lines:
+            failed_attempts = defaultdict(int)
+            alerts = []
+
+            for line in new_lines:
+                if "Failed password" in line:
+                    ip = line.split("from")[-1].strip()
+                    failed_attempts[ip] += 1
+
+                    if failed_attempts[ip] >= 3:
+                        alert = {
+                            "type": "Brute Force Attack",
+                            "ip": ip,
+                            "severity": "HIGH",
+                            "message": f"Multiple failed logins detected from {ip}"
+                        }
+                        alerts.append(alert)
+
+            if alerts:
+                save_alerts(alerts)
+                for alert in alerts:
+                    print("\n🚨 ALERT DETECTED")
+                    print(alert)
+
+            processed_lines = len(lines)
+
+        time.sleep(5)
+
+
+if __name__ == "__main__":
+    monitor()
