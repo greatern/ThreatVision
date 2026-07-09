@@ -2,10 +2,14 @@ from collections import defaultdict
 import os
 import time
 import logging
+from dotenv import load_dotenv
 from database import SessionLocal, Alert
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
+
 LOG_FILE = os.path.join(BASE_DIR, "logs", "auth.log")
+BRUTE_FORCE_THRESHOLD = int(os.getenv("BRUTE_FORCE_THRESHOLD", 3))
 
 logging.basicConfig(
     level=logging.INFO,
@@ -16,6 +20,7 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger("threatvision.detector")
+logger.info(f"Brute force threshold set to {BRUTE_FORCE_THRESHOLD}")
 
 
 def analyze_logs():
@@ -30,7 +35,7 @@ def analyze_logs():
             ip = line.split("from")[-1].strip()
             failed_attempts[ip] += 1
 
-            if failed_attempts[ip] >= 3:
+            if failed_attempts[ip] >= BRUTE_FORCE_THRESHOLD:
                 alert = {
                     "type": "Brute Force Attack",
                     "ip": ip,
@@ -77,7 +82,7 @@ def monitor():
                         ip = line.split("from")[-1].strip()
                         failed_attempts[ip] += 1
 
-                        if failed_attempts[ip] >= 3 and ip not in alerted_ips:
+                        if failed_attempts[ip] >= BRUTE_FORCE_THRESHOLD and ip not in alerted_ips:
                             alert = {
                                 "type": "Brute Force Attack",
                                 "ip": ip,

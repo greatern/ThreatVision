@@ -124,3 +124,125 @@ WHERE alerts.severity = %(severity_1)s) AS anon_1
 2026-07-09 14:09:38,373 [INFO] threatvision.api - Summary - total: 4, high: 4, medium: 0, low: 0
 2026-07-09 14:09:38,373 [INFO] sqlalchemy.engine.Engine - ROLLBACK
 2026-07-09 14:09:38,373 [INFO] sqlalchemy.engine.Engine - ROLLBACK
+2026-07-09 14:10:38,348 [INFO] sqlalchemy.engine.Engine - BEGIN (implicit)
+2026-07-09 14:10:38,349 [INFO] sqlalchemy.engine.Engine - SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts
+2026-07-09 14:10:38,350 [INFO] sqlalchemy.engine.Engine - [cached since 119.7s ago] {}
+2026-07-09 14:10:38,350 [INFO] sqlalchemy.engine.Engine - BEGIN (implicit)
+2026-07-09 14:10:38,351 [INFO] sqlalchemy.engine.Engine - SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts
+2026-07-09 14:10:38,351 [INFO] threatvision.api - Retrieved 4 alerts
+2026-07-09 14:10:38,351 [INFO] sqlalchemy.engine.Engine - [cached since 119.7s ago] {}
+2026-07-09 14:10:38,351 [INFO] sqlalchemy.engine.Engine - ROLLBACK
+2026-07-09 14:10:38,352 [INFO] threatvision.api - Retrieved 4 alerts
+2026-07-09 14:10:38,353 [INFO] sqlalchemy.engine.Engine - ROLLBACK
+2026-07-09 14:10:38,355 [INFO] sqlalchemy.engine.Engine - BEGIN (implicit)
+2026-07-09 14:10:38,355 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts) AS anon_1
+2026-07-09 14:10:38,356 [INFO] sqlalchemy.engine.Engine - [cached since 119.6s ago] {}
+2026-07-09 14:10:38,356 [INFO] sqlalchemy.engine.Engine - BEGIN (implicit)
+2026-07-09 14:10:38,357 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts) AS anon_1
+2026-07-09 14:10:38,357 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:10:38,358 [INFO] sqlalchemy.engine.Engine - [cached since 119.6s ago] {}
+2026-07-09 14:10:38,358 [INFO] sqlalchemy.engine.Engine - [cached since 119.6s ago] {'severity_1': 'HIGH'}
+2026-07-09 14:10:38,359 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:10:38,360 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:10:38,361 [INFO] sqlalchemy.engine.Engine - [cached since 119.6s ago] {'severity_1': 'MEDIUM'}
+2026-07-09 14:10:38,361 [INFO] sqlalchemy.engine.Engine - [cached since 119.6s ago] {'severity_1': 'HIGH'}
+2026-07-09 14:10:38,363 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:10:38,364 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:10:38,364 [INFO] sqlalchemy.engine.Engine - [cached since 119.6s ago] {'severity_1': 'LOW'}
+2026-07-09 14:10:38,364 [INFO] sqlalchemy.engine.Engine - [cached since 119.6s ago] {'severity_1': 'MEDIUM'}
+2026-07-09 14:10:38,365 [INFO] threatvision.api - Summary - total: 4, high: 4, medium: 0, low: 0
+2026-07-09 14:10:38,365 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:10:38,366 [INFO] sqlalchemy.engine.Engine - ROLLBACK
+2026-07-09 14:10:38,366 [INFO] sqlalchemy.engine.Engine - [cached since 119.6s ago] {'severity_1': 'LOW'}
+2026-07-09 14:10:38,367 [INFO] threatvision.api - Summary - total: 4, high: 4, medium: 0, low: 0
+2026-07-09 14:10:38,367 [INFO] sqlalchemy.engine.Engine - ROLLBACK
+2026-07-09 14:11:38,347 [INFO] sqlalchemy.engine.Engine - BEGIN (implicit)
+2026-07-09 14:11:38,348 [INFO] sqlalchemy.engine.Engine - BEGIN (implicit)
+2026-07-09 14:11:38,349 [INFO] sqlalchemy.engine.Engine - SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts
+2026-07-09 14:11:38,350 [INFO] sqlalchemy.engine.Engine - SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts
+2026-07-09 14:11:38,350 [INFO] sqlalchemy.engine.Engine - [cached since 179.7s ago] {}
+2026-07-09 14:11:38,350 [INFO] sqlalchemy.engine.Engine - [cached since 179.7s ago] {}
+2026-07-09 14:11:38,351 [INFO] threatvision.api - Retrieved 4 alerts
+2026-07-09 14:11:38,352 [INFO] threatvision.api - Retrieved 4 alerts
+2026-07-09 14:11:38,352 [INFO] sqlalchemy.engine.Engine - ROLLBACK
+2026-07-09 14:11:38,352 [INFO] sqlalchemy.engine.Engine - ROLLBACK
+2026-07-09 14:11:38,355 [INFO] sqlalchemy.engine.Engine - BEGIN (implicit)
+2026-07-09 14:11:38,356 [INFO] sqlalchemy.engine.Engine - BEGIN (implicit)
+2026-07-09 14:11:38,357 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts) AS anon_1
+2026-07-09 14:11:38,358 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts) AS anon_1
+2026-07-09 14:11:38,359 [INFO] sqlalchemy.engine.Engine - [cached since 179.6s ago] {}
+2026-07-09 14:11:38,359 [INFO] sqlalchemy.engine.Engine - [cached since 179.6s ago] {}
+2026-07-09 14:11:38,361 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:11:38,361 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:11:38,362 [INFO] sqlalchemy.engine.Engine - [cached since 179.6s ago] {'severity_1': 'HIGH'}
+2026-07-09 14:11:38,362 [INFO] sqlalchemy.engine.Engine - [cached since 179.6s ago] {'severity_1': 'HIGH'}
+2026-07-09 14:11:38,363 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:11:38,364 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:11:38,364 [INFO] sqlalchemy.engine.Engine - [cached since 179.6s ago] {'severity_1': 'MEDIUM'}
+2026-07-09 14:11:38,364 [INFO] sqlalchemy.engine.Engine - [cached since 179.6s ago] {'severity_1': 'MEDIUM'}
+2026-07-09 14:11:38,366 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:11:38,367 [INFO] sqlalchemy.engine.Engine - SELECT count(*) AS count_1 
+FROM (SELECT alerts.id AS alerts_id, alerts.type AS alerts_type, alerts.ip AS alerts_ip, alerts.severity AS alerts_severity, alerts.message AS alerts_message, alerts.timestamp AS alerts_timestamp 
+FROM alerts 
+WHERE alerts.severity = %(severity_1)s) AS anon_1
+2026-07-09 14:11:38,367 [INFO] sqlalchemy.engine.Engine - [cached since 179.6s ago] {'severity_1': 'LOW'}
+2026-07-09 14:11:38,367 [INFO] sqlalchemy.engine.Engine - [cached since 179.6s ago] {'severity_1': 'LOW'}
+2026-07-09 14:11:38,368 [INFO] threatvision.api - Summary - total: 4, high: 4, medium: 0, low: 0
+2026-07-09 14:11:38,368 [INFO] threatvision.api - Summary - total: 4, high: 4, medium: 0, low: 0
+2026-07-09 14:11:38,368 [INFO] sqlalchemy.engine.Engine - ROLLBACK
+2026-07-09 14:11:38,369 [INFO] sqlalchemy.engine.Engine - ROLLBACK
+2026-07-09 14:12:06,860 [INFO] threatvision.detector - Brute force threshold set to 3
+2026-07-09 14:12:06,861 [INFO] threatvision.api - Starting background monitor thread...
+2026-07-09 14:12:06,862 [INFO] threatvision.detector - ThreatVision monitoring started
+2026-07-09 14:12:06,862 [INFO] threatvision.api - Monitor thread started successfully
+2026-07-09 14:12:06,862 [WARNING] threatvision.detector - Brute force attack detected from 192.168.1.10
+2026-07-09 14:12:06,867 [INFO] sqlalchemy.engine.Engine - BEGIN (implicit)
+2026-07-09 14:12:06,869 [INFO] sqlalchemy.engine.Engine - INSERT INTO alerts (type, ip, severity, message, timestamp) VALUES (%(type)s, %(ip)s, %(severity)s, %(message)s, %(timestamp)s)
+2026-07-09 14:12:06,869 [INFO] sqlalchemy.engine.Engine - [generated in 0.00068s] {'type': 'Brute Force Attack', 'ip': '192.168.1.10', 'severity': 'HIGH', 'message': 'Multiple failed logins detected from 192.168.1.10', 'timestamp': datetime.datetime(2026, 7, 9, 12, 12, 6, 869018)}
+2026-07-09 14:12:06,871 [INFO] sqlalchemy.engine.Engine - COMMIT
+2026-07-09 14:12:06,875 [INFO] threatvision.detector - Saved 1 new alerts to database
