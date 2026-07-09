@@ -6,9 +6,7 @@ function SeverityBadge({ severity }) {
     MEDIUM: { bg: '#f59e0b22', color: '#f59e0b', border: '#f59e0b44' },
     LOW: { bg: '#22c55e22', color: '#22c55e', border: '#22c55e44' }
   }
-
   const style = colors[severity] || colors.LOW
-
   return (
     <span style={{
       backgroundColor: style.bg,
@@ -22,6 +20,12 @@ function SeverityBadge({ severity }) {
       {severity}
     </span>
   )
+}
+
+function formatTimestamp(ts) {
+  if (!ts) return '—'
+  const date = new Date(ts)
+  return date.toLocaleString()
 }
 
 function AlertTable({ alerts, onDelete }) {
@@ -49,7 +53,7 @@ function AlertTable({ alerts, onDelete }) {
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid #2d3148' }}>
-            {['ID', 'Type', 'IP Address', 'Severity', 'Message', ''].map(header => (
+            {['ID', 'Type', 'IP Address', 'Severity', 'Message', 'Timestamp', ''].map(header => (
               <th key={header} style={{
                 padding: '14px 20px',
                 textAlign: 'left',
@@ -78,6 +82,7 @@ function AlertTable({ alerts, onDelete }) {
               <td style={{ padding: '14px 20px', fontSize: '14px', fontFamily: 'monospace', color: '#6366f1' }}>{alert.ip}</td>
               <td style={{ padding: '14px 20px' }}><SeverityBadge severity={alert.severity} /></td>
               <td style={{ padding: '14px 20px', fontSize: '14px', color: '#94a3b8' }}>{alert.message}</td>
+              <td style={{ padding: '14px 20px', fontSize: '12px', color: '#64748b', whiteSpace: 'nowrap' }}>{formatTimestamp(alert.timestamp)}</td>
               <td style={{ padding: '14px 20px' }}>
                 <button
                   onClick={() => onDelete(alert.id)}

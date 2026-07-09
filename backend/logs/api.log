@@ -1,0 +1,6 @@
+2026-07-09 14:08:00,559 [INFO] threatvision.api - Starting background monitor thread...
+2026-07-09 14:08:00,560 [INFO] threatvision.api - Monitor thread started successfully
+2026-07-09 14:08:00,563 [INFO] sqlalchemy.engine.Engine - BEGIN (implicit)
+2026-07-09 14:08:00,564 [INFO] sqlalchemy.engine.Engine - INSERT INTO alerts (type, ip, severity, message, timestamp) VALUES (%(type)s, %(ip)s, %(severity)s, %(message)s, %(timestamp)s)
+2026-07-09 14:08:00,565 [INFO] sqlalchemy.engine.Engine - [generated in 0.00072s] {'type': 'Brute Force Attack', 'ip': '192.168.1.10', 'severity': 'HIGH', 'message': 'Multiple failed logins detected from 192.168.1.10', 'timestamp': datetime.datetime(2026, 7, 9, 12, 8, 0, 564619)}
+2026-07-09 14:08:00,566 [INFO] sqlalchemy.engine.Engine - COMMIT

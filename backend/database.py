@@ -1,12 +1,14 @@
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.orm import declarative_base, sessionmaker
 from dotenv import load_dotenv
+from datetime import datetime
 import os
 import time
 
-load_dotenv()
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = "mysql+pymysql://root:password@localhost/threatvision"
 
 Base = declarative_base()
 
@@ -18,6 +20,7 @@ class Alert(Base):
     ip = Column(String(50))
     severity = Column(String(20))
     message = Column(String(255))
+    timestamp = Column(DateTime, default=datetime.utcnow)
 
 def create_engine_with_retry(retries=10, delay=5):
     for attempt in range(retries):

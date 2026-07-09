@@ -1,10 +1,22 @@
 from collections import defaultdict
 import os
 import time
+import logging
 from database import SessionLocal, Alert
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_FILE = os.path.join(BASE_DIR, "logs", "auth.log")
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
+    handlers=[
+        logging.FileHandler(os.path.join(BASE_DIR, "logs", "detector.log")),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger("threatvision.detector")
+
 
 def analyze_logs():
     with open(LOG_FILE, "r") as file:
@@ -45,7 +57,7 @@ def save_alerts(alerts):
 
 
 def monitor():
-    print("🔍 ThreatVision monitoring started...")
+    logger.info("ThreatVision monitoring started")
     processed_lines = 0
     alerted_ips = set()
 
@@ -74,17 +86,16 @@ def monitor():
                             }
                             alerts.append(alert)
                             alerted_ips.add(ip)
+                            logger.warning(f"Brute force attack detected from {ip}")
 
                 if alerts:
                     save_alerts(alerts)
-                    for alert in alerts:
-                        print("\n🚨 ALERT DETECTED")
-                        print(alert)
+                    logger.info(f"Saved {len(alerts)} new alerts to database")
 
                 processed_lines = len(lines)
 
         except Exception as e:
-            print(f"Monitor error: {e}")
+            logger.error(f"Monitor error: {e}")
 
         time.sleep(5)
 
